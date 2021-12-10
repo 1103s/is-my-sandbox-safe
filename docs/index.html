@@ -19,6 +19,11 @@
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <!-- Other -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.form.io/formiojs/formio.full.min.css">
+        <script src="https://cdn.form.io/formiojs/formio.full.min.js"></script>
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -54,43 +59,8 @@
                         <p class="lead mb-5"> For each question concider your
                         sandbox and pick what fits the best.</p>
 
-                        <form>
-                            <div class="mb-3">
-
-                                <label for="q1" class="form-label">
-                                    Email address
-                                </label>
-                                <div id="q1_text" class="form-text">
-                                    We'll never share your email with anyone else.
-                                </div>
-                                <input id="q1" name="q1" 
-                                type="radio" class="btn-check" 
-                                autocomplete="off" checked>
-                                <label class="btn btn-outline"
-                                for="q1">
-                                Checked success radio
-                                </label>
-                                <input id="q1a" name="q1" 
-                                type="radio" class="btn-check" 
-                                autocomplete="off">
-                                <label class="btn btn-outline"
-                                for="q1a">
-                                Checked success radio
-                                </label>
-
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
-                            </div>
-                            <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-
+                        
+                        <div id="formio"></formio>
 
                     </div>
                 </div>
@@ -209,5 +179,434 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        <script>
+            Formio.icons = 'fontawesome';
+            Formio.createForm(document.getElementById('formio'), {
+                             "components": [
+                                            {
+                                                "title": "Sandbox Evaluation Matrix",
+                                                "theme": "primary",
+                                                "collapsible": false,
+                                                "key": "page1",
+                                                "type": "panel",
+                                                "label": "Page 1",
+                                                "components": [
+                                                    {
+                                                        "label": "User & Program File Integrity",
+                                                        "description": "Any computational system can be described with three fundamental components:\nusers, program data, and policy. The integrity of these three objects is essential for a\nsecure system. Since users and data often implemented with files and\ndatabases, and policy is not, policy will be addressed in its own section.\n",
+                                                        "tableView": false,
+                                                        "questions": [
+                                                            {
+                                                                "label": "Program files are separate from user files (Login information, ACL, ...).",
+                                                                "value": "a",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "User files are backed up.",
+                                                                "value": "b",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Program files are backed up.",
+                                                                "value": "c",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Backups are regularly made.",
+                                                                "value": "d",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "There are regular test my backups by performing a full sandbox rebuild.",
+                                                                "value": "e",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "There are hardware redundant copies of program files and user files.",
+                                                                "value": "f",
+                                                                "tooltip": ""
+                                                            }
+                                                        ],
+                                                        "values": [
+                                                            {
+                                                                "label": "Unknown ",
+                                                                "value": "0",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Not Implemented",
+                                                                "value": "1",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Partly Implemented",
+                                                                "value": "3",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Completely Implemented ",
+                                                                "value": "4",
+                                                                "tooltip": ""
+                                                            }
+                                                        ],
+                                                        "defaultValue": {
+                                                            "a": "0",
+                                                            "b": "0",
+                                                            "c": "0",
+                                                            "d": "0",
+                                                            "e": "0",
+                                                            "f": "0"
+                                                        },
+                                                        "key": "survey1",
+                                                        "type": "survey",
+                                                        "input": true
+                                                    },
+                                                    {
+                                                        "label": "Policy Integrity",
+                                                        "description": "Policy is what ultimately governs how users can access program data. It can take\nmany forms and may not even be directly implemented in the computer.\nNonetheless, the integrity of policy is just as important as users and program\ndata.\n",
+                                                        "tableView": false,
+                                                        "questions": [
+                                                            {
+                                                                "label": "The functions of the sandbox are well defined.",
+                                                                "value": "a",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "There are unit tests for the defined functions.",
+                                                                "value": "b",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Sandbox Interfaces are well documented.",
+                                                                "value": "c",
+                                                                "tooltip": ""
+                                                            }
+                                                        ],
+                                                        "values": [
+                                                            {
+                                                                "label": "Unknown ",
+                                                                "value": "0",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Not Implemented",
+                                                                "value": "1",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Partly Implemented",
+                                                                "value": "3",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Completely Implemented ",
+                                                                "value": "4",
+                                                                "tooltip": ""
+                                                            }
+                                                        ],
+                                                        "defaultValue": {
+                                                            "a": "0",
+                                                            "b": "0",
+                                                            "c": "0",
+                                                            "d": "0",
+                                                            "e": "0",
+                                                            "f": "0"
+                                                        },
+                                                        "key": "survey2",
+                                                        "type": "survey",
+                                                        "input": true
+                                                    },
+                                                    {
+                                                        "label": "Economy of Mechanism",
+                                                        "description": "For every function added to a sandbox the overall complexity of the system will\nincrease. With this increase in complexity the number of possible error states\nalso increases, thus reducing the security of the information contained in the\nsystem. \n",
+                                                        "tableView": false,
+                                                        "questions": [
+                                                            {
+                                                                "label": "The implementaions of the functions of the sandbox are not unduly complicated.",
+                                                                "value": "a",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "There are not undocumented features.",
+                                                                "value": "b",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "The sandbox does not contain functions not required by policy.",
+                                                                "value": "c",
+                                                                "tooltip": ""
+                                                            }
+                                                        ],
+                                                        "values": [
+                                                            {
+                                                                "label": "Unknown ",
+                                                                "value": "0",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Not Implemented",
+                                                                "value": "1",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Partly Implemented",
+                                                                "value": "3",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Completely Implemented ",
+                                                                "value": "4",
+                                                                "tooltip": ""
+                                                            }
+                                                        ],
+                                                        "defaultValue": {
+                                                            "a": "0",
+                                                            "b": "0",
+                                                            "c": "0",
+                                                            "d": "0",
+                                                            "e": "0",
+                                                            "f": "0"
+                                                        },
+                                                        "key": "survey3",
+                                                        "type": "survey",
+                                                        "input": true
+                                                    },
+                                                    {
+                                                        "label": "Fail-safe Design",
+                                                        "description": "It should be assumed that some component of the sandbox will faill. In such an\nevent the system should be designed such that security is mantaind to the\nmaximum alowable extent in the hindered enviroment.\n",
+                                                        "tableView": false,
+                                                        "questions": [
+                                                            {
+                                                                "label": "There are checks to prevent data corruption. ",
+                                                                "value": "a",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Inputs to the interfaces of the sandbox are escaped and sanitized.",
+                                                                "value": "b",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Permissible actions are filtered by what is allowed and not what is not (whitelists & blacklists).",
+                                                                "value": "c",
+                                                                "tooltip": ""
+                                                            }
+                                                        ],
+                                                        "values": [
+                                                            {
+                                                                "label": "Unknown ",
+                                                                "value": "0",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Not Implemented",
+                                                                "value": "1",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Partly Implemented",
+                                                                "value": "3",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Completely Implemented ",
+                                                                "value": "4",
+                                                                "tooltip": ""
+                                                            }
+                                                        ],
+                                                        "defaultValue": {
+                                                            "a": "0",
+                                                            "b": "0",
+                                                            "c": "0",
+                                                            "d": "0",
+                                                            "e": "0",
+                                                            "f": "0"
+                                                        },
+                                                        "key": "survey4",
+                                                        "type": "survey",
+                                                        "input": true
+                                                    },
+                                                    {
+                                                        "label": "Consistent Enforcement",
+                                                        "description": "In order for a security mechanism to maintain integrity, there must not be\nexceptions to its checking. If one allows special privileges for a process it\nwill then become all an attacker needs to do to bypass the security of the system\n",
+                                                        "tableView": false,
+                                                        "questions": [
+                                                            {
+                                                                "label": "Security policy is consistently applied.",
+                                                                "value": "a",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "The sandbox security measures are always invoked.",
+                                                                "value": "b",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "All debugging mechanisms that would potentially give unwarranted access are removed from production environments.",
+                                                                "value": "c",
+                                                                "tooltip": ""
+                                                            }
+                                                        ],
+                                                        "values": [
+                                                            {
+                                                                "label": "Unknown ",
+                                                                "value": "0",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Not Implemented",
+                                                                "value": "1",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Partly Implemented",
+                                                                "value": "3",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Completely Implemented ",
+                                                                "value": "4",
+                                                                "tooltip": ""
+                                                            }
+                                                        ],
+                                                        "defaultValue": {
+                                                            "a": "0",
+                                                            "b": "0",
+                                                            "c": "0",
+                                                            "d": "0",
+                                                            "e": "0",
+                                                            "f": "0"
+                                                        },
+                                                        "key": "survey5",
+                                                        "type": "survey",
+                                                        "input": true
+                                                    },
+                                                    {
+                                                        "label": "Transparent Implementation",
+                                                        "description": "In order for a security mechanism to maintain integrity, there must not be\nexceptions to its checking. If one allows special privileges for a process it\nwill then become all an attacker needs to do to bypass the security of the system\n",
+                                                        "tableView": false,
+                                                        "questions": [
+                                                            {
+                                                                "label": "The sandbox does not contain black-box code. ",
+                                                                "value": "a",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "The sandbox does not contain grey-box code.",
+                                                                "value": "b",
+                                                                "tooltip": ""
+                                                            }
+                                                        ],
+                                                        "values": [
+                                                            {
+                                                                "label": "Unknown ",
+                                                                "value": "0",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Not Implemented",
+                                                                "value": "1",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Partly Implemented",
+                                                                "value": "3",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Completely Implemented ",
+                                                                "value": "4",
+                                                                "tooltip": ""
+                                                            }
+                                                        ],
+                                                        "defaultValue": {
+                                                            "a": "0",
+                                                            "b": "0",
+                                                            "c": "0",
+                                                            "d": "0",
+                                                            "e": "0",
+                                                            "f": "0"
+                                                        },
+                                                        "key": "survey6",
+                                                        "type": "survey",
+                                                        "input": true
+                                                    },
+                                                    {
+                                                        "label": "Minimize Resources",
+                                                        "description": "The core princple of a container, minimizing the resources that a process can\naccess to decrece colateral damage if something foes wrong, should also be\napplied to the internal components of the container to mitigate damage if\nsomething goes wrong.\n",
+                                                        "tableView": false,
+                                                        "questions": [
+                                                            {
+                                                                "label": "Functions are given the least possible permissions to achieve their purpose.",
+                                                                "value": "a",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Functions and their permissions are compartmentalized.",
+                                                                "value": "b",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Shared resources are restricted.",
+                                                                "value": "c",
+                                                                "tooltip": ""
+                                                            }
+                                                        ],
+                                                        "values": [
+                                                            {
+                                                                "label": "Unknown ",
+                                                                "value": "0",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Not Implemented",
+                                                                "value": "1",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Partly Implemented",
+                                                                "value": "3",
+                                                                "tooltip": ""
+                                                            },
+                                                            {
+                                                                "label": "Completely Implemented ",
+                                                                "value": "4",
+                                                                "tooltip": ""
+                                                            }
+                                                        ],
+                                                        "defaultValue": {
+                                                            "a": "0",
+                                                            "b": "0",
+                                                            "c": "0",
+                                                            "d": "0",
+                                                            "e": "0",
+                                                            "f": "0"
+                                                        },
+                                                        "key": "survey7",
+                                                        "type": "survey",
+                                                        "input": true
+                                                    },
+                                                    {
+                                                        "label": "SCORE",
+                                                        "placeholder": "N/A",
+                                                        "description": "Your sandbox fulfilled the above shown amount of the recommended criteria.\nWeather this value is sufficient will depend on your particular threat model.\nThis being said a failing score should be the source of some concern.\n",
+                                                        "suffix": "%",
+                                                        "tableView": true,
+                                                        "redrawOn": "data",
+                                                        "calculateValue": "value = ((( parseInt(data.survey1.a) + parseInt(data.survey1.b) + parseInt(data.survey1.c) + parseInt(data.survey1.d) + parseInt(data.survey1.e) + parseInt(data.survey1.f) ) + ( parseInt(data.survey2.a) + parseInt(data.survey2.b) + parseInt(data.survey2.c) ) + ( parseInt(data.survey3.a) + parseInt(data.survey3.b) + parseInt(data.survey3.c) ) + ( parseInt(data.survey4.a) + parseInt(data.survey4.b) + parseInt(data.survey4.c) ) + ( parseInt(data.survey5.a) + parseInt(data.survey5.b) + parseInt(data.survey5.c) ) + ( parseInt(data.survey6.a) + parseInt(data.survey6.b) ) + ( parseInt(data.survey7.a) + parseInt(data.survey7.b) + parseInt(data.survey7.c) )) * 100) / 92;\nvalue = (\"\" + value).slice(0,3);",
+                                                        "key": "score",
+                                                        "type": "textfield",
+                                                        "input": true
+                                                    }
+                                                ],
+                                                "input": false,
+                                                "tableView": false
+                                            }
+                                        ]
+                        }).then(function(form) {
+                            form.on('submit', function(submission) {
+                                    console.log(submission); });
+                                    });
+        </script>
     </body>
 </html>
