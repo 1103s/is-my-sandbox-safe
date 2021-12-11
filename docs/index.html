@@ -55,9 +55,7 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-10">
                         <h2>Sandbox Evaluation Matrix</h2>
-                        <p class="lead mb-5"> For each question consider your
-                        sandbox and how each security requirement is implemented. 
-                        </p>
+                        <p class="lead mb-5">For each question consider how each security requirement is currently implemented in your sandbox.</p>
 
                         
                         <div id="formio"></formio>
@@ -154,7 +152,7 @@
                                                 "components": [
                                                     {
                                                         "label": "User & Program File Integrity",
-                                                        "description": "Any computational system can be described with three fundamental components:\nusers, program data, and policy. The integrity of these three objects is essential for a\nsecure system. Since users and data often implemented with files and\ndatabases, and policy is not, policy will be addressed in its own section.\n",
+                                                        "description": "Any computational system can be described with three fundamental components:\nusers, program data, and policy. The integrity of these three objects is essential for a\nsecure system.  Since users and data are often implemented with files and\ndatabases, and policy is not, policy will be addressed in its own section.\n",
                                                         "tableView": false,
                                                         "questions": [
                                                             {
@@ -178,12 +176,12 @@
                                                                 "tooltip": ""
                                                             },
                                                             {
-                                                                "label": "There are regular test my backups by performing a full sandbox rebuild.",
+                                                                "label": "There are regular tests of the backups.",
                                                                 "value": "e",
                                                                 "tooltip": ""
                                                             },
                                                             {
-                                                                "label": "There are hardware redundant copies of program files and user files.",
+                                                                "label": "There are hardware-redundant copies of program and user files.",
                                                                 "value": "f",
                                                                 "tooltip": ""
                                                             }
@@ -228,7 +226,7 @@
                                                         "tableView": false,
                                                         "questions": [
                                                             {
-                                                                "label": "The functions of the sandbox are well defined.",
+                                                                "label": "The functions of the sandbox are well-defined.",
                                                                 "value": "a",
                                                                 "tooltip": ""
                                                             },
@@ -238,7 +236,7 @@
                                                                 "tooltip": ""
                                                             },
                                                             {
-                                                                "label": "Sandbox Interfaces are well documented.",
+                                                                "label": "Interfaces are well documented.",
                                                                 "value": "c",
                                                                 "tooltip": ""
                                                             }
@@ -279,7 +277,7 @@
                                                     },
                                                     {
                                                         "label": "Economy of Mechanism",
-                                                        "description": "For every function added to a sandbox the overall complexity of the system will\nincrease. With this increase in complexity the number of possible error states\nalso increases, thus reducing the security of the information contained in the\nsystem. \n",
+                                                        "description": "For every function added to a sandbox the overall complexity of the system will\nincrease.  With this increase in complexity, the number of possible error states\nalso increases, thus reducing the security of the information contained in the\nsystem. \n",
                                                         "tableView": false,
                                                         "questions": [
                                                             {
@@ -334,7 +332,7 @@
                                                     },
                                                     {
                                                         "label": "Fail-safe Design",
-                                                        "description": "It should be assumed that some component of the sandbox will fail. In such an\nevent the system should be designed such that security is maintained to the\nmaximum allowable extent in the hindered environment.\n",
+                                                        "description": "It should be assumed that some component of the sandbox will fail.  In such an\nevent, the system should be designed such that security is maintained to the\nmaximum allowable extent in the hindered environment.\n",
                                                         "tableView": false,
                                                         "questions": [
                                                             {
@@ -389,7 +387,7 @@
                                                     },
                                                     {
                                                         "label": "Consistent Enforcement",
-                                                        "description": "In order for a security mechanism to maintain integrity, there must not be\nexceptions to its checking.  If one allows special privileges for a process it\nwill then become all an attacker needs to do to bypass the security of the system.\n",
+                                                        "description": "One must be able to check their code in order to validate its correctness.",
                                                         "tableView": false,
                                                         "questions": [
                                                             {
@@ -550,7 +548,7 @@
                                                     {
                                                         "label": "SCORE",
                                                         "placeholder": "N/A",
-                                                        "description": "Your sandbox fulfilled the above shown amount of the recommended criteria.\nWeather this value is sufficient will depend on your particular threat model.\nThis being said a failing score should be the source of some concern.\n",
+                                                        "description": "Your sandbox fulfilled the above shown amount of the recommended criteria.\nWhether this value is sufficient will depend on your particular threat model.\nThat being said, a failing score should be the source of some concern.\n",
                                                         "suffix": "%",
                                                         "tableView": true,
                                                         "redrawOn": "data",
